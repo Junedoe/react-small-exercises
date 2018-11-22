@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 
 export default class Exercise1 extends Component {
-  render() {
-    return (
-      <div className="Exercise">
-        <h1>Exercise #1</h1>
-        <div className="alert alert-primary">
-          <u>Iteration 1</u>: Increment the number of like when you click on it <br />
-          <u>Iteration 2</u>: Display the "s" of "likes" only when the number is greater or equal than 2<br />
-        </div>
-        <button className="btn btn-primary">0 likes</button>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            click: 0
+        };
+    }
+    handleClick(e) {
+        let newClick = this.state.click + 1;
+        this.setState({
+            click: newClick
+        });
+    }
+
+    render() {
+        return (
+            <div className="Exercise">
+                <h1>Exercise 1</h1>
+                <div className="alert alert-info">Increment the number of like when you click on it</div>
+                <button className="btn btn-primary" onClick={e => this.handleClick(e)}>
+                    {this.state.click} likes
+                </button>
+            </div>
+        );
+    }
 }
